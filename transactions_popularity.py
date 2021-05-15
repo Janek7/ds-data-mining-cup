@@ -86,8 +86,9 @@ def rank_by_topic(x, df):
     
 df["rank_main_topic"] = df[["main topic", "pop"]].apply(lambda x: rank_by_topic(x,df), axis = 1)
 
-
-
+df_all_books = items[["itemID"]]
+df_all_books = df_all_books.merge(df[["itemID","pop","rank_main_topic"]], how = "left", on = "itemID")
+df_all_books.to_csv("/media/Moritz/080FFDFF509A959E/BWsync_share/Master_BW/Data Mining Cup/code_and_data/items_popularity.csv", sep = "|")
 
 #%%
 
